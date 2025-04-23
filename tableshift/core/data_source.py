@@ -3,6 +3,11 @@ Data sources for TableBench.
 
 Modified for 'Predictors from Causal Features Do Not Generalize Better to New Domains'.
 """
+import sys
+
+# Add the directory containing your module to the system path
+sys.path.append('/home/mmakar/projects/causal-predictors/tableshift')
+
 import glob
 import gzip
 import logging
@@ -528,7 +533,7 @@ class PhysioNetDataSource(DataSource):
                          "take several minutes.")
             # download the training data
             cmd = "wget -r -N -c -np https://physionet.org/files/challenge" \
-                  f"-2019/1.0.0/training/ -P={self.cache_dir}"
+                  f"-2019/1.0.0/training/ -P {self.cache_dir}"
             utils.run_in_subprocess(cmd)
         else:
             logging.info(f"detected valid physionet training data at {root}; "
@@ -603,7 +608,26 @@ class MIMICExtractDataSource(OfflineDataSource):
                 'hours_in') < window_size_hrs)]
 
         # Join data with labels and static features.
+        curr_cols = lvl2.columns.to_list()
+        if 'los_3' in Ys.columns: 
+            curr_cols.append('los_3')
+        elif 'mort_hosp' in Ys.columns: 
+            curr_cols.append('mort_hosp')
+        else: 
+            raise ValueError('Outcome not recognized')
+
+        lvl2.rename(columns={'':'b'})
+        lvl2.columns = ['_'.join(col).strip() for col in lvl2.columns.values]
+
+        print(lvl2[lvl2.columns[:2]].head())
+        print("=====================")
+        print(Ys.head())
+        print("=====================")       
         df_out = lvl2.join(Ys, how="inner")
+        df_out.columns = curr_cols 
+        for col in df_out: 
+            print(col)
+
         df_out = df_out.join(statics[MIMIC_EXTRACT_STATIC_FEATURES.names])
         assert len(df_out) == len(lvl2), "Sanity check of labels join."
         return df_out

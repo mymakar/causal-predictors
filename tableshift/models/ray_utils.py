@@ -478,7 +478,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
                 resources_per_worker={
                     "GPU": tune_config.gpu_per_worker if use_gpu else 0,
                     "CPU": tune_config.cpu_per_worker},
-                _max_cpu_fraction_per_node=0.8,
+                # _max_cpu_fraction_per_node=0.8,
                 use_gpu=use_gpu))
         # Hyperparameter search space; note that the scaling_config can also
         # be tuned but is fixed here.
@@ -500,7 +500,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             trainer_resources={"CPU": 0},
             use_gpu=False,
             resources_per_worker={"CPU": tune_config.cpu_per_worker},
-            _max_cpu_fraction_per_node=0.8)
+            # _max_cpu_fraction_per_node=0.8
+            )
         params = {
             # Note: tree_method must be gpu_hist if using GPU.
             "tree_method": "hist",
@@ -522,7 +523,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             trainer_resources={"CPU": 0},
             use_gpu=False,
             resources_per_worker={"CPU": tune_config.cpu_per_worker},
-            _max_cpu_fraction_per_node=0.8)
+            # _max_cpu_fraction_per_node=0.8
+            )
         datasets = prepare_ray_datasets(dset,
                                         split_train_loaders_by_domain=False,
                                         prepare_pytorch=False)

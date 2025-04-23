@@ -140,8 +140,12 @@ class Dataset(ABC):
 
     def _check_split(self, split):
         """Check that a split name is valid."""
-        assert self._is_valid_split(split), \
-            f"split {split} not in {list(self.splits.keys())}"
+        if isinstance(self.splits, list):
+            assert self._is_valid_split(split), \
+                f"split {split} not in {self.splits}"
+        else: 
+            assert self._is_valid_split(split), \
+                f"split {split} not in {list(self.splits.keys())}"
 
     @abstractmethod
     def _get_split_df(self, split: str, domain=None) -> pd.DataFrame:

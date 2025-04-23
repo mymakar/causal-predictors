@@ -6,6 +6,7 @@ from ray import tune
 
 from tableshift.models.compat import OPTIMIZER_ARGS
 
+
 # Superset of https://arxiv.org/pdf/2106.11959.pdf, Table 15,
 # in order to cover hparams for other searches that derive from this space.
 _DEFAULT_NN_SEARCH_SPACE = {
@@ -227,8 +228,8 @@ _ib_erm_search_space = {
     # https://github.com/facebookresearch/DomainBed/blob
     # /2ed9edf781fe4b336c2fb6ffe7ca8a7c6f994422/domainbed/hparams_registry.py
     # #L61
-    "ib_lambda": 10**tune.uniform(-1, 5),
-    "ib_penalty_anneal_iters": 10**tune.uniform(0, 4),
+    "ib_lambda": tune.sample_from(lambda _: 10.0**np.random.uniform(-1, 5)),
+    "ib_penalty_anneal_iters": tune.sample_from(lambda _: 10.0**np.random.uniform(0, 4)),
 }
 
 _ib_irm_search_space = {
@@ -239,8 +240,8 @@ _ib_irm_search_space = {
     # #L61
     "irm_lambda": tune.loguniform(1e-1, 1e5),
     "irm_penalty_anneal_iters": tune.loguniform(1, 1e4),
-    "ib_lambda": 10**tune.uniform(-1, 5),
-    "ib_penalty_anneal_iters": 10**tune.uniform(0, 4),
+    "ib_lambda": tune.sample_from(lambda _: 10.0**np.random.uniform(-1, 5)),
+    "ib_penalty_anneal_iters": tune.sample_from(lambda _: 10.0**np.random.uniform(0, 4)),
 }
 
 _causirl_coral_search_space = {

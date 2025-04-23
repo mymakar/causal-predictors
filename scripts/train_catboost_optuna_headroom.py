@@ -30,7 +30,7 @@ from tableshift.core.utils import timestamp_as_int
 
 
 def evaluate(model: CatBoostClassifier, X: pd.DataFrame, y: pd.Series,
-             split: str) -> dict:
+             split: str, split_mode: str) -> dict:
     yhat_hard = model.predict(X)
     yhat_soft = model.predict_proba(X)[:, 1]
     metrics = {}
@@ -40,19 +40,30 @@ def evaluate(model: CatBoostClassifier, X: pd.DataFrame, y: pd.Series,
 
     metrics[f"{split}_num_samples"] = len(y)
     metrics[f"{split}_ymean"] = np.mean(y).item()
-    return metrics
+    return metrics, yhat_hard, yhat_soft
 
 
 def main(experiment: str, cache_dir: str, results_dir: str, num_samples: int,
          random_seed:int,
-         use_gpu: bool, use_cached: bool):
+         use_gpu: bool, use_cached: bool, split_mode: str):
+
+    if split_mode not in ['train', 'new_train', 'oracle']: 
+        raise NotImplementedError(
+            'Choose from train, new_train and oracle')
     start_time = timestamp_as_int()
 
     dset = get_dataset(experiment, cache_dir, use_cached=use_cached)
     uid = dset.uid
 
-    X_tr, y_tr, _, _ = dset.get_pandas("train")
-    X_val, y_val, _, _ = dset.get_pandas("validation")
+    if split_mode == 'train':
+        X_tr, y_tr, _, _ = dset.get_pandas("train")
+        X_val, y_val, _, _ = dset.get_pandas("validation")
+    elif split_mode == 'new_train': 
+        X_tr, y_tr, _, _ = dset.get_pandas("new_train")
+        X_val, y_val, _, _ = dset.get_pandas("validation")   
+    elif split_mode == 'oracle': 
+        X_tr, y_tr, _, _ = dset.get_pandas("oracle")
+        X_val, y_val, _, _ = dset.get_pandas("ood_validation")           
 
     def optimize_hp(trial: optuna.trial.Trial):
         cb_params = {
@@ -78,7 +89,8 @@ def main(experiment: str, cache_dir: str, results_dir: str, num_samples: int,
         return accuracy_score(y_val, y_pred)
 
     study = optuna.create_study(direction="maximize")
-    study.optimize(optimize_hp, n_trials=num_samples)
+    study.optimize(optimize_hp, n_trials=min(100, num_samples))
+    # study.optimize(optimize_hp, n_trials=2)
     print('Trials:', len(study.trials))
     print('Best parameters:', study.best_trial.params)
     print('Best score:', study.best_value)
@@ -98,23 +110,42 @@ def main(experiment: str, cache_dir: str, results_dir: str, num_samples: int,
     metrics["domain_split_id_values"] = str(dset.get_domains("id_test"))
 
     splits = (
-        'id_test', 'ood_test', 'ood_validation', 'validation') if dset.is_domain_split else (
+        'id_test', 'ood_test', 'new_ood_test', 'ood_validation', 'validation') if dset.is_domain_split else (
         'test', 'validation')
     for split in splits:
         X, y, _, _ = dset.get_pandas(split)
-        _metrics = evaluate(clf_with_best_params, X, y, split)
+        _metrics, yhat_hard, yhat_soft = evaluate(
+            clf_with_best_params, X, y, split, split_mode)
         print(_metrics)
         metrics.update(_metrics)
+        if split == 'new_ood_test': 
+            yhat_hard_keep = yhat_hard.copy()
+            yhat_soft_keep = yhat_soft.copy()
+            y_keep = y.copy()
 
     iter_fp = os.path.join(
         expt_results_dir,
         f"tune_results_{experiment}_{start_time}_{uid[:100]}_"
-        f"{model_name}.csv")
+        f"{model_name}_{split_mode}.csv")
+    iter_preds = os.path.join(
+        expt_results_dir,
+        f"prediction_results_{experiment}_{start_time}_{uid[:100]}_"
+        f"{model_name}_{split_mode}.csv")
+
     if not os.path.exists(expt_results_dir):
         os.makedirs(expt_results_dir)
 
+    print(iter_fp)
     logging.info(f"writing results for {model_name} to {iter_fp}")
     pd.DataFrame(metrics, index=[1]).to_csv(iter_fp, index=False)
+    res_df = pd.DataFrame({
+        'y': y_keep,
+        'hard_pred': yhat_hard_keep, 
+        'soft_pred': yhat_soft_keep
+        })
+    res_df.to_csv(iter_preds, index=False)
+    print(res_df.head())
+
 
 
 if __name__ == "__main__":
@@ -135,5 +166,8 @@ if __name__ == "__main__":
                         help="whether to use cached data.")
     parser.add_argument("--use_gpu", action="store_true", default=False,
                         help="whether to use GPU (if available)")
+    parser.add_argument("--split_mode", default="train",
+                    help="train, new_train or oracle.")
+
     args = parser.parse_args()
     main(**vars(args))

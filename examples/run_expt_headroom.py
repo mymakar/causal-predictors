@@ -11,7 +11,7 @@ import torch
 from sklearn.metrics import accuracy_score
 
 from tableshift import get_dataset
-from tableshift.models.training import train
+from tableshift.models.training_headroom import train
 from tableshift.models.utils import get_estimator
 from tableshift.models.default_hparams import get_default_config
 

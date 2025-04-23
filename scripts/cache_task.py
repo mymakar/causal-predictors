@@ -4,6 +4,11 @@ Cache a tabular dataset.
 Usage:
     python scripts/cache_task.py --experiment heloc
 """
+import sys
+
+# Add the directory containing your module to the system path
+sys.path.append('/home/mmakar/projects/causal-predictors')
+
 import argparse
 import logging
 

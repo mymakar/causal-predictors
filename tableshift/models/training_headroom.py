@@ -190,6 +190,7 @@ def _train_sklearn(estimator, dset: TabularDataset,
     logging.info("fitting estimator complete.")
 
     if tune_report_split:
+        raise NotImplementedError("haven't implemented this part yet")
         X_te, _, _, _ = dset.get_pandas(split=tune_report_split)
         y_hat_te = estimator.predict(X_te)
         metrics = dset.evaluate_predictions(y_hat_te, split=tune_report_split)
