@@ -1,7 +1,4 @@
 ## step 0: setup conda environment
-- Run `conda env create -f environment.yml` where `environment.yml` is the file provided by the causal predictors github
-- This gave me a ton of "errors". I went ahead with the install anyway. Think those errors are because the env.yml file specified an older version of python..
-- After that I had to install the following manually: 
 -- conda create -n cp python=3.11
 -- conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 -- conda install nvidia/label/cuda-11.8.0::cuda-toolkit
