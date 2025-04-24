@@ -69,11 +69,15 @@ def get_oracle_test_split(experiment, cache_dir,
     original_ts_df, base_dir = load_data(experiment, cache_dir, 
         use_cached, "ood_test")
 
+    original_tr_df, _ = load_data(experiment, cache_dir, 
+    use_cached, "train")
+
     # Get a random permutation of the DataFrame's indices
     shuffled_indices = rng.permutation(original_ts_df.index)
 
     # Calculate the split index
-    split_index = len(original_ts_df) // 2
+    split_index = min(int(len(original_ts_df) * 0.75), original_tr_df.shape[0])
+    del original_tr_df
 
     # Split the indices into two groups
     indices_1 = shuffled_indices[:split_index]
