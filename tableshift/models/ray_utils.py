@@ -283,6 +283,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
         debug: a flag for debug mode.
     """
     auto_garbage_collect()
+
+    #TODO: This is the part to change    
     dset_domains = {s: dset.get_domains(s) for s in
                     ("train", "test", "id_test", "ood_test")}
 
@@ -338,11 +340,13 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             elif validation_only:
                 eval_shards = ('validation',)
 
+            # MM: changed this
             elif dset.is_domain_split:
                 # Overall eval loaders (compute e.g. overall id/ood
                 # validation and test accuracy)
                 eval_shards = (
-                    'validation', 'id_test', 'ood_test', 'ood_validation')
+                    'validation', 'id_test', 'ood_test', 'ood_validation', 
+                    'new_ood_test')
 
             else:
                 eval_shards = ('validation', 'test')

@@ -11,7 +11,7 @@ from typing import Optional, Mapping, Union, Callable, Any, Dict
 import numpy as np
 import torch
 from ray.air import session
-from ray.air.checkpoint import Checkpoint
+from ray.train import Checkpoint
 from torch import nn
 from torch.utils.data import DataLoader
 

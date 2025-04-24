@@ -10,7 +10,6 @@ from frozendict import frozendict
 from ray.air import session
 import torch
 from tqdm import tqdm
-import numpy as np
 
 from tableshift.core import TabularDataset
 from tableshift.models.compat import SklearnStylePytorchModel, \
@@ -157,28 +156,13 @@ def _train_pytorch(estimator: SklearnStylePytorchModel, dset: TabularDataset,
                   max_examples_per_epoch=dset.n_train)
     return estimator
 
-
 def _train_sklearn(estimator, dset: TabularDataset,
-                   tune_report_split: str = None):
+                   tune_report_split: str = None, 
+                   split_mode:str = None):
     """Helper function to train a sklearn-type estimator."""
-    X_tr, y_tr, _, d_tr = dset.get_pandas(split="train")
-    # print(X_tr.shape, y_tr.shape)
-
-    # rng = np.random.RandomState(42)
-    # # random_indices = rng.choice(
-    # #     X.shape[0], size=23264, replace=False)
-    # random_indices = rng.choice(
-    #     X_tr.shape[0], size=100, replace=False)
-
-
-    # # Select the subset
-    # X_tr = X_tr.iloc[random_indices]
-    # y_tr = y_tr.iloc[random_indices]
-    # print(X_tr.shape, y_tr.shape)
-
+    X_tr, y_tr, _, d_tr = dset.get_pandas(split=split_mode)
     X_tr = X_tr.astype(float)  # modified for 'Predictors from Causal Features Do Not Generalize Better to New Domains'
     if isinstance(estimator, ExponentiatedGradient):
-        print("here")
         estimator.fit(X_tr, y_tr, d=d_tr)
     elif isinstance(estimator, WeightedCovariateShiftClassifier):
         X_ood_tr, y_ood_tr, _, _ = dset.get_pandas(split="ood_validation")
@@ -190,7 +174,6 @@ def _train_sklearn(estimator, dset: TabularDataset,
     logging.info("fitting estimator complete.")
 
     if tune_report_split:
-        raise NotImplementedError("haven't implemented this part yet")
         X_te, _, _, _ = dset.get_pandas(split=tune_report_split)
         y_hat_te = estimator.predict(X_te)
         metrics = dset.evaluate_predictions(y_hat_te, split=tune_report_split)
@@ -199,7 +182,7 @@ def _train_sklearn(estimator, dset: TabularDataset,
 
 
 def train(estimator: Any, dset: TabularDataset, tune_report_split: str = None,
-          **kwargs):
+          split_mode:str = None, **kwargs):
     logging.info(f"fitting estimator of type {type(estimator)}")
     if isinstance(estimator, torch.nn.Module):
         assert isinstance(
@@ -208,7 +191,9 @@ def train(estimator: Any, dset: TabularDataset, tune_report_split: str = None,
             f"train() can only be called with SklearnStylePytorchModel; got " \
             f"type {type(estimator)} "
         return _train_pytorch(estimator, dset,
-                              tune_report_split=tune_report_split, **kwargs)
+                              tune_report_split=tune_report_split, 
+                              split_mode=split_mode, **kwargs)
     else:
         return _train_sklearn(estimator, dset,
-                              tune_report_split=tune_report_split)
+                              tune_report_split=tune_report_split, 
+                              split_mode=split_mode)

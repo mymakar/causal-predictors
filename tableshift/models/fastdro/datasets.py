@@ -19,7 +19,7 @@ from itertools import product as product_iter
 
 from tableshift.models.fastdro import utils
 
-from collections import Mapping
+from collections.abc import Mapping
 
 
 DATASETS = ['mnist_typed', 'imagenet']

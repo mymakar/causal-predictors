@@ -8,7 +8,7 @@ import warnings
 from typing import Any, Dict, Optional, List
 
 from ray.air import session
-from ray.air.checkpoint import Checkpoint
+from ray.train import Checkpoint
 from ray.air.config import RunConfig, ScalingConfig
 from ray.train.trainer import BaseTrainer, GenDataset
 
