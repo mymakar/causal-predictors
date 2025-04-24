@@ -10,7 +10,6 @@ from frozendict import frozendict
 from ray.air import session
 import torch
 from tqdm import tqdm
-import numpy as np
 
 from tableshift.core import TabularDataset
 from tableshift.models.compat import SklearnStylePytorchModel, \
@@ -162,23 +161,8 @@ def _train_sklearn(estimator, dset: TabularDataset,
                    tune_report_split: str = None):
     """Helper function to train a sklearn-type estimator."""
     X_tr, y_tr, _, d_tr = dset.get_pandas(split="train")
-    # print(X_tr.shape, y_tr.shape)
-
-    # rng = np.random.RandomState(42)
-    # # random_indices = rng.choice(
-    # #     X.shape[0], size=23264, replace=False)
-    # random_indices = rng.choice(
-    #     X_tr.shape[0], size=100, replace=False)
-
-
-    # # Select the subset
-    # X_tr = X_tr.iloc[random_indices]
-    # y_tr = y_tr.iloc[random_indices]
-    # print(X_tr.shape, y_tr.shape)
-
     X_tr = X_tr.astype(float)  # modified for 'Predictors from Causal Features Do Not Generalize Better to New Domains'
     if isinstance(estimator, ExponentiatedGradient):
-        print("here")
         estimator.fit(X_tr, y_tr, d=d_tr)
     elif isinstance(estimator, WeightedCovariateShiftClassifier):
         X_ood_tr, y_ood_tr, _, _ = dset.get_pandas(split="ood_validation")
