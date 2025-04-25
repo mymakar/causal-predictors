@@ -66,6 +66,7 @@ def main(experiment: str,
          exclude_models: Optional[List[str]] = None,
          config_dict: Optional[str] = None,
          ):
+
     start_time = timestamp_as_int()
     assert not (gpu_models_only and cpu_models_only)
     if gpu_models_only:
@@ -107,6 +108,8 @@ def main(experiment: str,
     else:
         dset = get_dataset(name=experiment, cache_dir=cache_dir,
                            use_cached=use_cached)
+    # manually add the names of the new splits
+    dset.splits = dset.splits + ["new_ood_test", "oracle", "new_train"]
     logging.debug(f"torch.cuda.is_available(): {torch.cuda.is_available()}")
 
     expt_results_dir = os.path.join(results_dir, experiment, str(start_time))

@@ -15,7 +15,7 @@ import torch
 from ray import train, tune
 from ray.air import session, ScalingConfig, RunConfig, DatasetConfig
 from ray.train.lightgbm import LightGBMTrainer
-from ray.train.torch import TorchCheckpoint, TorchTrainer
+# from ray.train.torch import TorchCheckpoint, TorchTrainer
 from ray.train.xgboost import XGBoostTrainer
 from ray.tune import Tuner
 from ray.tune.schedulers import ASHAScheduler
@@ -244,9 +244,12 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
                          ) -> Dict[str, ray.data.Dataset]:
     """Fetch a dict of {split:ray.data.Dataset} for each split."""
     ray_dsets = {}
+    #NOTE: added because not tested otherwise
+    assert not split_train_loaders_by_domain
+
     for split in dset.splits:
         if (split == "train" and split_train_loaders_by_domain) \
-                or (split in ["id_test", "ood_test"]
+                or (split in ["id_test", "ood_test", "new_ood_test"]
                     and compute_per_domain_test_metrics):
             # Case: prepare per-split dataloaders when training dataset
             # needs to be split by domain (e.g. for domain generalization
@@ -286,7 +289,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 
     #TODO: This is the part to change    
     dset_domains = {s: dset.get_domains(s) for s in
-                    ("train", "test", "id_test", "ood_test")}
+                    ("train", "test", "id_test", "ood_test", 
+                        "new_ood_test", "oracle", "new_train")}
 
     # Explicitly initialize ray in order to set the temp dir.
     ray.init(_temp_dir=tune_config.ray_tmp_dir, ignore_reinit_error=True)
