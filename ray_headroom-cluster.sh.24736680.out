@@ -1,0 +1,59 @@
+╭──────────────────────────────────────────────────────────╮
+│ Configuration for experiment     tableshift              │
+├──────────────────────────────────────────────────────────┤
+│ Search algorithm                 SearchGenerator         │
+│ Scheduler                        AsyncHyperBandScheduler │
+│ Number of trials                 50                      │
+╰──────────────────────────────────────────────────────────╯
+
+View detailed results here: /home/rjsingh/ray_results/tableshift
+To visualize your results with TensorBoard, run: `tensorboard --logdir /tmp/ray/session_2025-04-28_19-49-58_238332_712563/artifacts/2025-04-28_19-50-08/tableshift/driver_artifacts`
+
+Trial status: 1 PENDING
+Current time: 2025-04-28 19:50:08. Total running time: 0s
+Logical resource usage: 0/36 CPUs, 0/0 GPUs
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name                 status       params/learning_rate     ...min_child_samples     .../min_child_weight     params/subsample     params/max_depth     .../colsample_bytree     ...colsample_bylevel     params/reg_alpha     params/reg_lambda │
+├───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ LightGBMTrainer_5d9a9440   PENDING               0.000164587                        8                  31.1567             0.795395                    6                  0.72302                 0.925513               11.443             0.0032299 │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial LightGBMTrainer_5d9a9440 started with configuration:
+╭───────────────────────────────────────────────────────╮
+│ Trial LightGBMTrainer_5d9a9440 config                 │
+├───────────────────────────────────────────────────────┤
+│ params/colsample_bylevel                     0.925513 │
+│ params/colsample_bytree                       0.72302 │
+│ params/learning_rate                      0.000164587 │
+│ params/max_depth                                    6 │
+│ params/min_child_samples                            8 │
+│ params/min_child_weight                       31.1567 │
+│ params/reg_alpha                               11.443 │
+│ params/reg_lambda                           0.0032299 │
+│ params/subsample                             0.795395 │
+╰───────────────────────────────────────────────────────╯
+
+Trial LightGBMTrainer_5de1b60b started with configuration:
+╭───────────────────────────────────────────────────────╮
+│ Trial LightGBMTrainer_5de1b60b config                 │
+├───────────────────────────────────────────────────────┤
+│ params/colsample_bylevel                      0.91828 │
+│ params/colsample_bytree                      0.963194 │
+│ params/learning_rate                      0.000121064 │
+│ params/max_depth                                   19 │
+│ params/min_child_samples                            4 │
+│ params/min_child_weight                       88.6536 │
+│ params/reg_alpha                          3.15908e-05 │
+│ params/reg_lambda                          1.9731e-05 │
+│ params/subsample                             0.995723 │
+╰───────────────────────────────────────────────────────╯
+
+Trial status: 2 RUNNING
+Current time: 2025-04-28 19:50:38. Total running time: 30s
+Logical resource usage: 2.0/36 CPUs, 0/0 GPUs
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name                 status       params/learning_rate     ...min_child_samples     .../min_child_weight     params/subsample     params/max_depth     .../colsample_bytree     ...colsample_bylevel     params/reg_alpha     params/reg_lambda │
+├───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ LightGBMTrainer_5d9a9440   RUNNING               0.000164587                        8                  31.1567             0.795395                    6                 0.72302                  0.925513         11.443                  0.0032299  │
+│ LightGBMTrainer_5de1b60b   RUNNING               0.000121064                        4                  88.6536             0.995723                   19                 0.963194                 0.91828           3.15908e-05            1.9731e-05 │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

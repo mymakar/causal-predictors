@@ -9,6 +9,7 @@ from tableshift.models.compat import OPTIMIZER_ARGS
 
 # Superset of https://arxiv.org/pdf/2106.11959.pdf, Table 15,
 # in order to cover hparams for other searches that derive from this space.
+"""
 _DEFAULT_NN_SEARCH_SPACE = {
     "d_hidden": tune.choice([64, 128, 256, 512, 1024]),
     "lr": tune.loguniform(1e-5, 1e-1),
@@ -17,7 +18,15 @@ _DEFAULT_NN_SEARCH_SPACE = {
     "dropouts": tune.uniform(0., 0.5),
     "weight_decay": tune.loguniform(1e-6, 1.)
 }
-
+"""
+_DEFAULT_NN_SEARCH_SPACE = {
+    "d_hidden": 64,
+    "lr": 0.01,
+    "n_epochs": 1,
+    "num_layers": 1,
+    "dropouts": 0.,
+    "weight_decay": 0.01
+}
 _aldro_search_space = {
     **_DEFAULT_NN_SEARCH_SPACE,
     "eta_pi": tune.loguniform(1e-5, 1e-1),
@@ -126,9 +135,13 @@ _expgrad_search_space = {
     "eta0": tune.choice([0.1, 0.2, 1.0, 2.0]),
 }
 
+# _group_dro_search_space = {
+#     **_DEFAULT_NN_SEARCH_SPACE,
+#     "group_weights_step_size": tune.loguniform(1e-4, 1e0),
+# }
 _group_dro_search_space = {
-    **_DEFAULT_NN_SEARCH_SPACE,
-    "group_weights_step_size": tune.loguniform(1e-4, 1e0),
+     **_DEFAULT_NN_SEARCH_SPACE,
+     "group_weights_step_size": 0.05,
 }
 
 # Superset of https://arxiv.org/pdf/2106.11959.pdf, Table 14.

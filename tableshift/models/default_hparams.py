@@ -83,8 +83,8 @@ _DEFAULT_CONFIGS = frozendict({
          # set irm_penalty_anneal_iters s.t. optimizer resets after 1 update
          "irm_penalty_anneal_iters": 1},
     "label_group_dro":
-        {"num_layers": 2,
-         "d_hidden": 256,
+        {"num_layers": 1,
+         "d_hidden": 64,
          "group_weights_step_size": 0.05,
          "dropouts": 0.},
     "mlp":

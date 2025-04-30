@@ -6,7 +6,7 @@ Modified for 'Predictors from Causal Features Do Not Generalize Better to New Do
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/mmakar/projects/causal-predictors/tableshift')
+sys.path.append('/home/rjsingh/causal_models')
 
 import glob
 import gzip

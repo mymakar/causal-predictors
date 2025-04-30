@@ -1,7 +1,7 @@
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/mmakar/projects/causal-predictors')
+sys.path.append('/home/rjsingh/causal_models')
 
 
 import argparse
@@ -38,7 +38,7 @@ def main(experiment, cache_dir, model, use_cached,
     config = get_default_config(model, dset)
     estimator = get_estimator(model, **config)
     estimator = train(estimator, dset, config=config)
-
+    # Look at what train is doing for pytorch, predictions taking forever
     if not isinstance(estimator, torch.nn.Module):
         # Case: non-pytorch estimator; perform test-split evaluation.
         # test_split = "ood_test" if dset.is_domain_split else "test"

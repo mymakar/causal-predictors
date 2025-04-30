@@ -14,8 +14,9 @@ import sklearn
 import torch
 from ray import train, tune
 from ray.air import session, ScalingConfig, RunConfig, DatasetConfig
+from ray.train import DataConfig
 from ray.train.lightgbm import LightGBMTrainer
-# from ray.train.torch import TorchCheckpoint, TorchTrainer
+from ray.train.torch import TorchCheckpoint, TorchTrainer
 from ray.train.xgboost import XGBoostTrainer
 from ray.tune import Tuner
 from ray.tune.schedulers import ASHAScheduler
@@ -464,23 +465,29 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             prepare_pytorch=True)
 
         use_gpu = torch.cuda.is_available()
-
+        if use_gpu:
+            print("YESSIR")
+        else:
+            print("NOPE")
         # Fit preprocessors on the train dataset only (not currently used).
         # Split the dataset across workers if scaling_config["num_workers"] > 1.
         # See https://docs.ray.io/en/latest/ray-air/check-ingest.html
-        dataset_config = {ds: DatasetConfig(split=True) for ds in
-                          train_loader_keys}
-
+        # Changed DatasetConfig to DataConfig
+        #dataset_config = {ds: DatasetConfig(split=True) for ds in
+        #                 train_loader_keys}
+        dataset_config = DataConfig(datasets_to_split = train_loader_keys)
         # For all other datasets, use the defaults (don't fit, don't split).
         # The datasets will be transformed by the fitted preprocessor.
         # See https://docs.ray.io/en/latest/ray-air/check-ingest.html
-        dataset_config["*"] = DatasetConfig()
+        # the other datasets are handled automatically now
+        #Supposedly this is done automatically now, just specify what to split
+       # dataset_config["*"] = DatasetConfig()
 
         trainer = TorchTrainer(
             train_loop_per_worker=train_loop_per_worker,
             train_loop_config=default_train_config,
             datasets=datasets,
-            dataset_config=dataset_config,
+          #  dataset_config=dataset_config,
             scaling_config=ScalingConfig(
                 num_workers=tune_config.num_workers,
                 resources_per_worker={

@@ -10,7 +10,7 @@ Basic usage:
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/mmakar/projects/causal-predictors')
+sys.path.append('/home/rjsingh/causal_models')
 
 
 import argparse
@@ -66,7 +66,7 @@ def main(experiment: str,
          exclude_models: Optional[List[str]] = None,
          config_dict: Optional[str] = None,
          ):
-
+    # add some print statements, understand what is really happening here at each line
     start_time = timestamp_as_int()
     assert not (gpu_models_only and cpu_models_only)
     if gpu_models_only:
@@ -120,7 +120,7 @@ def main(experiment: str,
     for model_name in models:
         logging.info(f"training model {model_name}")
         metric_name, mode = accuracy_metric_name_and_mode_for_model(model_name)
-
+        # this is where the ray stuff starts
         tune_config = RayExperimentConfig(
             max_concurrent_trials=max_concurrent_trials,
             ray_tmp_dir=ray_tmp_dir,

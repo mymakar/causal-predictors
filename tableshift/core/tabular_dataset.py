@@ -33,7 +33,7 @@ def _make_dataloader_from_dataframes(
         data, batch_size: int, shuffle: bool,
         infinite=False) -> DataLoader:
     """Construct a (shuffled) DataLoader from a DataFrame."""
-    data = tuple(map(lambda x: torch.tensor(x.values.astype(np.float)).float(), data))
+    data = tuple(map(lambda x: torch.tensor(x.values.astype(np.float64)).float(), data))
     tds = torch.utils.data.TensorDataset(*data)
     if infinite:
         loader = InfiniteDataLoader(dataset=tds, batch_size=batch_size)

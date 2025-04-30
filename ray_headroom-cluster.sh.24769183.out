@@ -1,0 +1,434 @@
+╭──────────────────────────────────────────────────────────╮
+│ Configuration for experiment     tableshift              │
+├──────────────────────────────────────────────────────────┤
+│ Search algorithm                 SearchGenerator         │
+│ Scheduler                        AsyncHyperBandScheduler │
+│ Number of trials                 50                      │
+╰──────────────────────────────────────────────────────────╯
+
+View detailed results here: /home/rjsingh/ray_results/tableshift
+To visualize your results with TensorBoard, run: `tensorboard --logdir /tmp/ray/session_2025-04-29_14-34-36_149291_88158/artifacts/2025-04-29_14-35-05/tableshift/driver_artifacts`
+
+Trial status: 1 PENDING
+Current time: 2025-04-29 14:35:05. Total running time: 0s
+Logical resource usage: 0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   PENDING               7.50099e-05               0.00350542                        3                        8                     2048                        8                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_e5f4412a started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_e5f4412a config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          8 │
+│ train_loop_config/lr                   7.50099e-05 │
+│ train_loop_config/n_epochs                       3 │
+│ train_loop_config/num_layers                     8 │
+│ train_loop_config/total_tree_count            2048 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay          0.00350542 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 1 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:35:35. Total running time: 30s
+Logical resource usage: 4.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05               0.00350542                        3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   PENDING               0.00341558                0.888548                          3                        2                     1024                        6                        2 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_c4a98cb4 started with configuration:
+╭───────────────────────────────────────────────────╮
+│ Trial TorchTrainer_c4a98cb4 config                │
+├───────────────────────────────────────────────────┤
+│ train_loop_config/depth                         6 │
+│ train_loop_config/lr                   0.00341558 │
+│ train_loop_config/n_epochs                      3 │
+│ train_loop_config/num_layers                    2 │
+│ train_loop_config/total_tree_count           1024 │
+│ train_loop_config/tree_dim                      2 │
+│ train_loop_config/weight_decay           0.888548 │
+╰───────────────────────────────────────────────────╯
+
+Trial status: 2 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:36:05. Total running time: 1min 0s
+Logical resource usage: 6.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05               0.00350542                        3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558                0.888548                          3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   PENDING               7.94869e-05               0.00395568                        2                        8                     2048                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_37e7fa9b started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_37e7fa9b config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          6 │
+│ train_loop_config/lr                   7.94869e-05 │
+│ train_loop_config/n_epochs                       2 │
+│ train_loop_config/num_layers                     8 │
+│ train_loop_config/total_tree_count            2048 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay          0.00395568 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 3 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:36:35. Total running time: 1min 30s
+Logical resource usage: 6.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   PENDING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:37:05. Total running time: 2min 0s
+Logical resource usage: 6.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   PENDING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:37:35. Total running time: 2min 30s
+Logical resource usage: 8.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   PENDING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_20c8fadf started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_20c8fadf config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          6 │
+│ train_loop_config/lr                   4.64188e-05 │
+│ train_loop_config/n_epochs                       2 │
+│ train_loop_config/num_layers                     2 │
+│ train_loop_config/total_tree_count            1024 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay         6.74836e-05 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 4 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:38:05. Total running time: 3min 0s
+Logical resource usage: 8.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   PENDING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 4 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:38:35. Total running time: 3min 30s
+Logical resource usage: 8.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   PENDING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 4 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:39:05. Total running time: 4min 0s
+Logical resource usage: 10.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   PENDING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_ada1af08 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_ada1af08 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          8 │
+│ train_loop_config/lr                    0.00157733 │
+│ train_loop_config/n_epochs                       4 │
+│ train_loop_config/num_layers                     8 │
+│ train_loop_config/total_tree_count            2048 │
+│ train_loop_config/tree_dim                       2 │
+│ train_loop_config/weight_decay         6.93878e-06 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 5 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:39:35. Total running time: 4min 30s
+Logical resource usage: 10.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   PENDING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 5 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:40:05. Total running time: 5min 0s
+Logical resource usage: 12.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   PENDING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_c1a4ef6d started with configuration:
+╭──────────────────────────────────────────────────╮
+│ Trial TorchTrainer_c1a4ef6d config               │
+├──────────────────────────────────────────────────┤
+│ train_loop_config/depth                        6 │
+│ train_loop_config/lr                   0.0013232 │
+│ train_loop_config/n_epochs                     2 │
+│ train_loop_config/num_layers                   8 │
+│ train_loop_config/total_tree_count          1024 │
+│ train_loop_config/tree_dim                     3 │
+│ train_loop_config/weight_decay         0.0673639 │
+╰──────────────────────────────────────────────────╯
+
+Trial status: 6 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:40:36. Total running time: 5min 30s
+Logical resource usage: 14.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   PENDING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_b2287685 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_b2287685 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          6 │
+│ train_loop_config/lr                   8.09832e-05 │
+│ train_loop_config/n_epochs                       3 │
+│ train_loop_config/num_layers                     8 │
+│ train_loop_config/total_tree_count            1024 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay            0.940143 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 7 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:41:06. Total running time: 6min 0s
+Logical resource usage: 14.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   PENDING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 7 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:41:36. Total running time: 6min 30s
+Logical resource usage: 16.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   PENDING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_c0ba90a6 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_c0ba90a6 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          8 │
+│ train_loop_config/lr                   8.76701e-05 │
+│ train_loop_config/n_epochs                       2 │
+│ train_loop_config/num_layers                     4 │
+│ train_loop_config/total_tree_count            2048 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay         2.61776e-05 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 8 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:42:06. Total running time: 7min 0s
+Logical resource usage: 16.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   PENDING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 8 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:42:36. Total running time: 7min 30s
+Logical resource usage: 18.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   PENDING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_77e0134d started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_77e0134d config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          8 │
+│ train_loop_config/lr                    0.00039147 │
+│ train_loop_config/n_epochs                       2 │
+│ train_loop_config/num_layers                     4 │
+│ train_loop_config/total_tree_count            1024 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay         0.000225884 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 9 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:43:06. Total running time: 8min 1s
+Logical resource usage: 18.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   RUNNING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+│ TorchTrainer_c5ebfd83   PENDING               7.11253e-05              2.19132e-05                        2                        4                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 9 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:43:36. Total running time: 8min 31s
+Logical resource usage: 20.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   RUNNING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+│ TorchTrainer_c5ebfd83   PENDING               7.11253e-05              2.19132e-05                        2                        4                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 9 RUNNING | 1 PENDING
+Current time: 2025-04-29 14:44:06. Total running time: 9min 1s
+Logical resource usage: 20.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   RUNNING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+│ TorchTrainer_c5ebfd83   PENDING               7.11253e-05              2.19132e-05                        2                        4                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial TorchTrainer_c5ebfd83 started with configuration:
+╭────────────────────────────────────────────────────╮
+│ Trial TorchTrainer_c5ebfd83 config                 │
+├────────────────────────────────────────────────────┤
+│ train_loop_config/depth                          6 │
+│ train_loop_config/lr                   7.11253e-05 │
+│ train_loop_config/n_epochs                       2 │
+│ train_loop_config/num_layers                     4 │
+│ train_loop_config/total_tree_count            1024 │
+│ train_loop_config/tree_dim                       3 │
+│ train_loop_config/weight_decay         2.19132e-05 │
+╰────────────────────────────────────────────────────╯
+
+Trial status: 10 RUNNING
+Current time: 2025-04-29 14:44:36. Total running time: 9min 31s
+Logical resource usage: 20.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   RUNNING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+│ TorchTrainer_c5ebfd83   RUNNING               7.11253e-05              2.19132e-05                        2                        4                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 10 RUNNING
+Current time: 2025-04-29 14:45:06. Total running time: 10min 1s
+Logical resource usage: 20.0/36 CPUs, 0/0 GPUs
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       train_loop_config/lr     ...nfig/weight_decay     ...p_config/n_epochs     ...config/num_layers     .../total_tree_count     ...loop_config/depth     ...p_config/tree_dim │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TorchTrainer_e5f4412a   RUNNING               7.50099e-05              0.00350542                         3                        8                     2048                        8                        3 │
+│ TorchTrainer_c4a98cb4   RUNNING               0.00341558               0.888548                           3                        2                     1024                        6                        2 │
+│ TorchTrainer_37e7fa9b   RUNNING               7.94869e-05              0.00395568                         2                        8                     2048                        6                        3 │
+│ TorchTrainer_20c8fadf   RUNNING               4.64188e-05              6.74836e-05                        2                        2                     1024                        6                        3 │
+│ TorchTrainer_ada1af08   RUNNING               0.00157733               6.93878e-06                        4                        8                     2048                        8                        2 │
+│ TorchTrainer_c1a4ef6d   RUNNING               0.0013232                0.0673639                          2                        8                     1024                        6                        3 │
+│ TorchTrainer_b2287685   RUNNING               8.09832e-05              0.940143                           3                        8                     1024                        6                        3 │
+│ TorchTrainer_c0ba90a6   RUNNING               8.76701e-05              2.61776e-05                        2                        4                     2048                        8                        3 │
+│ TorchTrainer_77e0134d   RUNNING               0.00039147               0.000225884                        2                        4                     1024                        8                        3 │
+│ TorchTrainer_c5ebfd83   RUNNING               7.11253e-05              2.19132e-05                        2                        4                     1024                        6                        3 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

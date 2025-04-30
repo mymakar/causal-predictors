@@ -38,9 +38,9 @@ python scripts/cache_task.py \
 ## step 2: create new data splits 
 ```
 python scripts/create_new_splits.py \
-    --experiment diabetes_readmission \
+    --experiment brfss_blood_pressure \
     --use_cached \
-    --cache_dir  /nfs/turbo/coe-rbg/mmakar/tableshift/ 
+    --cache_dir  /nfs/turbo/coe-soto/tableshift/
 ```
 
 
