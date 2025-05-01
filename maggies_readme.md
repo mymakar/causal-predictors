@@ -91,7 +91,7 @@ python scripts/train_catboost_optuna_headroom.py \
 
 ### Ray headroom
 python scripts/ray_train_headroom.py \
-    --models label_group_dro \
+    --models lightgbm \
     --experiment acspubcov \
     --cache_dir  /nfs/turbo/coe-rbg/mmakar/tableshift/ \
     --use_cached \
@@ -187,7 +187,8 @@ python scripts/ray_train_headroom.py \
     --cache_dir  /nfs/turbo/coe-rbg/mmakar/tableshift/ \
     --use_cached \
     --num_samples 1\
-    --max_concurrent_trials 1
+    --max_concurrent_trials 1 \
+    --split_mode train
 
 
 

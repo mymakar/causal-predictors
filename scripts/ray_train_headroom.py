@@ -43,6 +43,7 @@ logging.basicConfig(
 
 
 def main(experiment: str,
+         split_mode: str, 
          cache_dir: str,
          ray_tmp_dir: str,
          ray_local_dir: str,
@@ -108,6 +109,7 @@ def main(experiment: str,
     else:
         dset = get_dataset(name=experiment, cache_dir=cache_dir,
                            use_cached=use_cached)
+
     # manually add the names of the new splits
     dset.splits = dset.splits + ["new_ood_test", "oracle", "new_train"]
     logging.debug(f"torch.cuda.is_available(): {torch.cuda.is_available()}")
@@ -136,11 +138,14 @@ def main(experiment: str,
             mode=mode) if not no_tune else None
 
         results = run_ray_tune_experiment(
-            dset=dset, model_name=model_name,
+            dset=dset,
+            split_mode = split_mode,  
+            model_name=model_name,
             pred_save_dir='/nfs/turbo/coe-soto/tableshift/res',
             tune_config=tune_config,
             debug=debug,
-            compute_per_domain_metrics=not no_per_domain_metrics)
+            # HARDCODED
+            compute_per_domain_metrics=False)
 
         df = fetch_postprocessed_results_df(results)
 
@@ -177,6 +182,8 @@ if __name__ == "__main__":
              'values provided in the config during training.'
              'Use to e.g. specify a fixed batch size.'
              'Example: --config_dict "{\"batch_size\": 256, \"some_list_param\": [0., 0., 1]}')
+    parser.add_argument("--split_mode", default="train",
+                        help="Which training data to use?")
     parser.add_argument("--cache_dir", default="tmp",
                         help="Directory to cache raw data files to.")
     parser.add_argument("--cpu_models_only", default=False,

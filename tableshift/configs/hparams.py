@@ -9,14 +9,24 @@ from tableshift.models.compat import OPTIMIZER_ARGS
 
 # Superset of https://arxiv.org/pdf/2106.11959.pdf, Table 15,
 # in order to cover hparams for other searches that derive from this space.
+# _DEFAULT_NN_SEARCH_SPACE = {
+#     "d_hidden": tune.choice([64, 128, 256, 512, 1024]),
+#     "lr": tune.loguniform(1e-5, 1e-1),
+#     "n_epochs": tune.qrandint(5, 100, 5),
+#     "num_layers": tune.randint(1, 8),
+#     "dropouts": tune.uniform(0., 0.5),
+#     "weight_decay": tune.loguniform(1e-6, 1.)
+# }
+
 _DEFAULT_NN_SEARCH_SPACE = {
-    "d_hidden": tune.choice([64, 128, 256, 512, 1024]),
+    "d_hidden": 64,
     "lr": tune.loguniform(1e-5, 1e-1),
-    "n_epochs": tune.qrandint(5, 100, 5),
-    "num_layers": tune.randint(1, 8),
-    "dropouts": tune.uniform(0., 0.5),
-    "weight_decay": tune.loguniform(1e-6, 1.)
+    "n_epochs": 1,
+    "num_layers": 1,
+    "dropouts": 0.,
+    "weight_decay": tune.loguniform(1e-6, 1e-6 + 1e-9)
 }
+
 
 _aldro_search_space = {
     **_DEFAULT_NN_SEARCH_SPACE,
@@ -127,9 +137,11 @@ _expgrad_search_space = {
 }
 
 _group_dro_search_space = {
-    **_DEFAULT_NN_SEARCH_SPACE,
-    "group_weights_step_size": tune.loguniform(1e-4, 1e0),
+     **_DEFAULT_NN_SEARCH_SPACE,
+     "group_weights_step_size": 0.05,
 }
+
+
 
 # Superset of https://arxiv.org/pdf/2106.11959.pdf, Table 14.
 _resnet_search_space = {
