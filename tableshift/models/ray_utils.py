@@ -15,7 +15,7 @@ import torch
 from ray import train, tune
 from ray.air import session, ScalingConfig, RunConfig, DatasetConfig
 from ray.train.lightgbm import LightGBMTrainer
-# from ray.train.torch import TorchCheckpoint, TorchTrainer
+from ray.train.torch import TorchCheckpoint, TorchTrainer
 from ray.train.xgboost import XGBoostTrainer
 from ray.tune import Tuner
 from ray.tune.schedulers import ASHAScheduler
@@ -30,6 +30,8 @@ from tableshift.models.expgrad import ExponentiatedGradientTrainer
 from tableshift.models.torchutils import get_predictions_and_labels, \
     get_module_attr
 from tableshift.models.utils import get_estimator
+
+os.environ['RAY_AIR_NEW_OUTPUT'] = '1'
 
 
 def auto_garbage_collect(pct=75.0, force=False):
@@ -171,12 +173,19 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
     dev = train.torch.get_device()
     model.eval()
     metrics = {}
+    # predictions = {}
+
     for split, loader in split_loaders.items():
         logging.debug(f"evaluating split {split} "
                       f"for model {model.__class__.__name__}")
         prediction_soft, target = get_predictions_and_labels(model, loader,
                                                              dev)
         prediction_hard = np.round(prediction_soft)
+
+        # predictions[f"{split}_soft"] = prediction_soft
+        # predictions[f"{split}_hard"] = prediction_hard
+        # predictions[f"{split}_true"] = target 
+
         acc = sklearn.metrics.accuracy_score(target, prediction_hard)
         avg_prec = sklearn.metrics.average_precision_score(target,
                                                            prediction_soft)
@@ -266,8 +275,9 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 
 def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
                             model_name: str,
+                            pred_save_dir: str,
                             tune_config: RayExperimentConfig = None,
-                            compute_per_domain_metrics: bool = True,
+                            compute_per_domain_metrics: bool = True,  
                             debug=False):
     """Rune a ray tuning experiment.
 
@@ -369,15 +379,15 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             computational efficiency we do not compute per-domain validation
             metrics).
             """
-            eval_loaders = _prepare_eval_loaders(validation_only=True)
-            logging.info(f"computing metrics on splits {eval_loaders.keys()}")
-            metrics = ray_evaluate(model, eval_loaders)
-            metrics.update(dict(train_loss=loss_train))
-            checkpoint = get_ray_checkpoint(model)
-            session.report(metrics, checkpoint=checkpoint)
+            # eval_loaders = _prepare_eval_loaders(validation_only=True)
+            # logging.info(f"computing metrics on splits {eval_loaders.keys()}")
+            # metrics = ray_evaluate(model, eval_loaders)
+            # metrics.update(dict(train_loss=loss_train))
+            # checkpoint = get_ray_checkpoint(model)
+            # session.report(metrics, checkpoint=checkpoint)
             return
 
-        def _on_train_end(loss_train):
+        def _on_train_end(loss_train, epoch, pred_save_dir):
             """Function to be called at the end of each training epoch to log
             validation/test metrics. (This is also called at the end of the
             first epoch, in order to populate the metrics for Ray).
@@ -396,9 +406,13 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
                                    for s in dset_domains['id_test']}
                 oo_test_loaders = {s: _prepare_shard(f"ood_test_{s}")
                                    for s in dset_domains['ood_test']}
+                
+                new_oo_test_loaders = {s: _prepare_shard(f"new_ood_test_{s}")
+                                   for s in dset_domains['new_ood_test']}
 
                 eval_loaders.update(id_test_loaders)
                 eval_loaders.update(oo_test_loaders)
+                eval_loaders.update(new_oo_test_loaders)
 
             logging.info(f"computing metrics on splits {eval_loaders.keys()}")
             metrics = ray_evaluate(model, eval_loaders)
@@ -443,11 +457,11 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
                 # Hack: the ray ResultsGrid object will only store metrics that
                 # are populated on the first run; we run a full test eval
                 # to populate all of the metrics.
-                _on_train_end(train_loss)
+                _on_train_end(train_loss, epoch, pred_save_dir)
             else:
                 _on_epoch_end(train_loss)
         # Log per-domain performance only on training end.
-        _on_train_end(train_loss)
+        _on_train_end(train_loss, epoch, pred_save_dir)
 
     # Get the default/fixed configs (these are provided to every Trainer but
     # can be overwritten if they are also in the param_space).
