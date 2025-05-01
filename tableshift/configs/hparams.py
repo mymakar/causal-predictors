@@ -25,7 +25,7 @@ _DEFAULT_NN_SEARCH_SPACE = {
     "n_epochs": 1,
     "num_layers": 1,
     "dropouts": 0.,
-    "weight_decay": 0.01
+    "weight_decay": tune.loguniform(1e-6, 1e-6 + 1e-9)
 }
 _aldro_search_space = {
     **_DEFAULT_NN_SEARCH_SPACE,

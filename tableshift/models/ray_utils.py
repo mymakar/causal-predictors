@@ -370,6 +370,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
             computational efficiency we do not compute per-domain validation
             metrics).
             """
+            # Maybe comment this out
             eval_loaders = _prepare_eval_loaders(validation_only=True)
             logging.info(f"computing metrics on splits {eval_loaders.keys()}")
             metrics = ray_evaluate(model, eval_loaders)
