@@ -109,8 +109,19 @@ class RayExperimentConfig:
 
 	def get_search_alg(self):
 		logging.info(f"instantiating search alg of type {self.search_alg}")
+		#GRADGUY
+		path = "./my-checkpoint2.pkl"
+		restore_previous = True
 		if self.search_alg == "hyperopt":
-			return HyperOptSearch(metric=self.tune_metric_name,
+			if restore_previous:
+				search_alg = HyperOptSearch(metric=self.tune_metric_name,
+								  mode=self.mode,
+								  random_state_seed=self.random_state)
+				search_alg.restore(path)
+				print(f"Restored search alg with {len(search_alg._hpopt_trials.trials)} trials")
+				return search_alg
+			else:
+				return HyperOptSearch(metric=self.tune_metric_name,
 								  mode=self.mode,
 								  random_state_seed=self.random_state)
 		elif self.search_alg == "random":
@@ -286,9 +297,9 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 		if (split_mode == "oracle") and \
 		(split in ["train", "new_train", "validation", "ood_test"]): 
 		    continue 
-
+		# GRADGUY: added ood_validation to bypass in new_train mode
 		elif (split_mode == "new_train") and \
-		(split in ["train", "oracle", "ood_test"]):
+		(split in ["train", "oracle", "ood_test", "ood_validation"]):
 		    continue
 		elif (split_mode == "train") and \
 		(split in ["new_train", "oracle"]):
@@ -374,7 +385,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 						"new_ood_test", "oracle", "new_train")}
 
 	# Explicitly initialize ray in order to set the temp dir.
-	ray.init(_temp_dir=tune_config.ray_tmp_dir, ignore_reinit_error=True, num_cpus=2)
+	ray.init(_temp_dir=tune_config.ray_tmp_dir, ignore_reinit_error=True, num_cpus=4)
 
 	is_dg = is_domain_generalization_model_name(model_name)
 
@@ -672,8 +683,9 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 		latest_checkpoint = result.checkpoint
 		return result
 
-	# Create Tuner.
 
+	search_alg = tune_config.get_search_alg()
+	
 	tuner = Tuner(
 		trainable=trainer,
 		run_config=RunConfig(name="tableshift",
@@ -681,13 +693,16 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 		param_space=param_space,
 		tune_config=tune.TuneConfig(
 			reuse_actors=tune_config.reuse_actors,
-			search_alg=tune_config.get_search_alg(),
+			search_alg= search_alg,
 			scheduler=tune_config.get_scheduler(),
 			num_samples=tune_config.num_samples,
 			time_budget_s=tune_config.time_budget_hrs * 3600 if tune_config.time_budget_hrs else None,
 			max_concurrent_trials=tune_config.max_concurrent_trials))
 
 	results = tuner.fit()
+	#GradGuy: I think save here
+	print(f"Now we've done {len(search_alg._hpopt_trials.trials)} trials")
+	search_alg.save("./my-checkpoint2.pkl")
 	ray.shutdown()
 	auto_garbage_collect(force=True)
 	if os.path.exists("/dev/shm"):
