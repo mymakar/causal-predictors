@@ -314,7 +314,7 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 		ray_dsets['train'] = ray_dsets['oracle']
 		ray_dsets['validation'] = ray_dsets['ood_validation']
 		del ray_dsets['oracle'], ray_dsets['ood_validation']
-		#ROHAN
+		#GRADGUY
 		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
 		del ray_dsets['new_ood_test']
 	#     keys_to_rename = [k for k in ray_dsets if k.startswith("oracle")]
@@ -330,7 +330,7 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 	elif split_mode == "new_train": 
 		ray_dsets['train'] = ray_dsets['new_train']
 		del ray_dsets['new_train']
-		#ROHAN ADDED THIS
+		#GRADGUY ADDED THIS
 		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
 		del ray_dsets['new_ood_test']
 	#     keys_to_rename = [k for k in ray_dsets if k.startswith("new_train")]
@@ -429,7 +429,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			elif dset.is_domain_split:
 				# Overall eval loaders (compute e.g. overall id/ood
 				# validation and test accuracy)
-				#ROHAN - removed new_ood_test + ood_validation since we are renaming
+				#GRADGUY - removed new_ood_test + ood_validation since we are renaming
 				eval_shards = (
 					'validation', 'id_test', 'ood_test')
 
@@ -475,7 +475,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			if dset.is_domain_split and compute_per_domain_metrics:
 				id_test_loaders = {s: _prepare_shard(f"id_test_{s}")
 								   for s in dset_domains['id_test']}
-				#ROHAN 
+				#GRADGUY
 				oo_test_loaders = {s: _prepare_shard(f"ood_test_{s}")
 								   for s in dset_domains['ood_test']}
 				# if split_mode != "new_train":
