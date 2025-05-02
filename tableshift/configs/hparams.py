@@ -12,7 +12,7 @@ from tableshift.models.compat import OPTIMIZER_ARGS
 # _DEFAULT_NN_SEARCH_SPACE = {
 #     "d_hidden": tune.choice([64, 128, 256, 512, 1024]),
 #     "lr": tune.loguniform(1e-5, 1e-1),
-#     "n_epochs": tune.qrandint(5, 100, 5),
+#     "n_epochs": tune.qrandint(5, 50, 5),
 #     "num_layers": tune.randint(1, 8),
 #     "dropouts": tune.uniform(0., 0.5),
 #     "weight_decay": tune.loguniform(1e-6, 1.)

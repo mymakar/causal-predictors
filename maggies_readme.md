@@ -1,11 +1,11 @@
 
 ## step 0: setup conda environment
--- conda create -n cp python=3.11
+-- conda create -n caus4 python=3.11
 -- conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 -- conda install nvidia/label/cuda-11.8.0::cuda-toolkit
 -- pip3 install -U "ray[data,train,tune,serve]"
 -- pip3 install xport fairlearn frozendict datasets folktables rtdl tab-transformer-pytorch optuna catboost
--- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nfs/turbo/coe-rbg/mmakar/miniconda/envs/cp/lib/
+-- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nfs/turbo/coe-rbg/rjsingh/miniconda/envs/caus4/lib/
 -- python -m pip install statsmodels
 -- pip install xgboost
 -- pip install lightgbm
@@ -14,15 +14,15 @@
 
 
 ### Step 0 alt: set up older conda env 
--- conda create -n cp2 python=3.10
+-- conda create -n caus4 python=3.10
 -- conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
 -- conda install nvidia/label/cuda-11.8.0::cuda-toolkit
 -- pip install ray==2.2.0
 -- pip3 install xport fairlearn frozendict datasets folktables rtdl tab-transformer-pytorch optuna catboost
--- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nfs/turbo/coe-rbg/mmakar/miniconda/envs/cp2/lib/
+-- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nfs/turbo/coe-rbg/rjsingh/miniconda/envs/caus5/lib/
 -- python -m pip install statsmodels
 -- pip install xgboost lightgbm category_encoders hyperopt
--- pip install ray[tune]==2.2.0
+-- conda install ray[tune]==2.2.0
 -- pip install lightgbm-ray==0.1.8
 -- pip uninstall ray 
 -- conda install conda-forge::ray-all=2.2.0
@@ -218,7 +218,7 @@ tableshift/core/tabular_datasets.py
 - tableshift/models/training_headroom.py
 
 ## Edits when going from cp to cp2: 
--- /nfs/turbo/coe-rbg/mmakar/miniconda/envs/cp2/lib/python3.10/site-packages/ray/air/util/tensor_extensions/arrow.py
+-- /nfs/turbo/coe-rbg/rjsingh/miniconda/envs/caus5/lib/python3.10/site-packages/ray/air/util/tensor_extensions/arrow.py
 line 4: 
 from pip._vendor.packaging.version import parse as parse_version
 -- /nfs/turbo/coe-rbg/mmakar/miniconda/envs/cp2/lib/python3.10/site-packages/ray/data/_internal/util.py

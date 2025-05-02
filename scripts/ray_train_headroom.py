@@ -10,7 +10,7 @@ Basic usage:
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/mmakar/projects/causal-predictors')
+sys.path.append('/home/rjsingh/causal_models')
 
 
 import argparse
@@ -162,7 +162,7 @@ def main(experiment: str,
             df.to_csv(iter_fp, index=False)
         iterates.append(df)
 
-        print(df)
+        print(df) 
         logging.info(f"finished training model {model_name}")
 
     fp = os.path.join(expt_results_dir,

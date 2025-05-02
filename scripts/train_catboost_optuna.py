@@ -10,7 +10,7 @@ python scripts/train_catboost_optuna \
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/mmakar/projects/causal-predictors')
+sys.path.append('/home/rjsingh/causal_models')
 
 
 

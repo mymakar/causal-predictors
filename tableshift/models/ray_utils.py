@@ -30,6 +30,9 @@ from tableshift.models.expgrad import ExponentiatedGradientTrainer
 from tableshift.models.torchutils import get_predictions_and_labels, \
 	get_module_attr
 from tableshift.models.utils import get_estimator
+from experiments_causal.metrics import balanced_accuracy_score
+from experiments_causal.run_experiment import bootstrap_auroc
+from statsmodels.stats.proportion import proportion_confint
 
 
 def auto_garbage_collect(pct=75.0, force=False):
@@ -195,6 +198,29 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
 		metrics[f"{split}_auc"] = \
 			(sklearn.metrics.roc_auc_score(target, prediction_soft)
 			 if len(np.unique(target)) > 1 else np.nan)
+		"""
+		Add eval for ood_test and new_ood_test here
+		"""
+		if split == 'ood_test' or split == 'new_ood_test':
+			nobs = len(target)
+			count = nobs * acc
+			acc_conf = proportion_confint(count, nobs, alpha=0.05, method="beta")
+			metrics[split + "_accuracy_conf"] = acc_conf
+			auc = metrics[f"{split}_auc"]
+			# import this ... values?
+			auc_lower, auc_upper = bootstrap_auroc(target, prediction_soft)
+			metrics[split + "_auc_conf_lower"] = auc_lower
+			metrics[split + "_auc_conf_upper"] = auc_upper 
+			#import this
+			balanced_acc, balanced_acc_se = balanced_accuracy_score(
+				target=target, prediction=prediction_hard
+			)
+			metrics[split + "_balanced"] = balanced_acc
+			balanced_acc_conf = (
+				balanced_acc - 1.96 * balanced_acc_se,
+				balanced_acc + 1.96 * balanced_acc_se,
+			)
+			metrics[split + "_balanced" + "_conf"] = balanced_acc_conf
 	return metrics
 
 
@@ -342,7 +368,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 						"new_ood_test", "oracle", "new_train")}
 
 	# Explicitly initialize ray in order to set the temp dir.
-	ray.init(_temp_dir=tune_config.ray_tmp_dir, ignore_reinit_error=True)
+	ray.init(_temp_dir=tune_config.ray_tmp_dir, ignore_reinit_error=True, num_cpus=2)
 
 	is_dg = is_domain_generalization_model_name(model_name)
 
