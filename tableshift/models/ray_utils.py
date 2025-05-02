@@ -305,7 +305,7 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 			# via compute_per_domain_test_metrics=False).
 			ray_dsets.update(get_per_domain_ray_dsets(dset, split,
 													  prepare_pytorch))
-
+	
 		ray_dsets[split] = prepare_dataset(split, dset, prepare_pytorch)
 
 	# rename
@@ -314,6 +314,9 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 		ray_dsets['train'] = ray_dsets['oracle']
 		ray_dsets['validation'] = ray_dsets['ood_validation']
 		del ray_dsets['oracle'], ray_dsets['ood_validation']
+		#ROHAN
+		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
+		del ray_dsets['new_ood_test']
 	#     keys_to_rename = [k for k in ray_dsets if k.startswith("oracle")]
 	#     for k in keys_to_rename:
 	#         new_key = k.replace("oracle", "train", 1)
@@ -327,12 +330,15 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 	elif split_mode == "new_train": 
 		ray_dsets['train'] = ray_dsets['new_train']
 		del ray_dsets['new_train']
+		#ROHAN ADDED THIS
+		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
+		del ray_dsets['new_ood_test']
 	#     keys_to_rename = [k for k in ray_dsets if k.startswith("new_train")]
 	#     for k in keys_to_rename:
 	#         new_key = k.replace("new_train", "train", 1)
 	#         ray_dsets[new_key] = ray_dsets.pop(k)
 			   
-	# print(list(ray_dsets.keys()))
+	print(list(ray_dsets.keys()))
 
 	return ray_dsets
 
@@ -423,9 +429,9 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			elif dset.is_domain_split:
 				# Overall eval loaders (compute e.g. overall id/ood
 				# validation and test accuracy)
+				#ROHAN - removed new_ood_test + ood_validation since we are renaming
 				eval_shards = (
-					'validation', 'id_test', 'ood_test', 'ood_validation', 
-					'new_ood_test')
+					'validation', 'id_test', 'ood_test')
 
 			else:
 				eval_shards = ('validation', 'test')
@@ -469,15 +475,16 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			if dset.is_domain_split and compute_per_domain_metrics:
 				id_test_loaders = {s: _prepare_shard(f"id_test_{s}")
 								   for s in dset_domains['id_test']}
+				#ROHAN 
 				oo_test_loaders = {s: _prepare_shard(f"ood_test_{s}")
 								   for s in dset_domains['ood_test']}
-				
-				new_oo_test_loaders = {s: _prepare_shard(f"new_ood_test_{s}")
-								   for s in dset_domains['new_ood_test']}
-
+				# if split_mode != "new_train":
+       			# 			new_oo_test_loaders = {s: _prepare_shard(f"new_ood_test_{s}")
+                #         						for s in dset_domains['new_ood_test']}
+        		# 			eval_loaders.update(new_oo_test_loaders)
 				eval_loaders.update(id_test_loaders)
 				eval_loaders.update(oo_test_loaders)
-				eval_loaders.update(new_oo_test_loaders)
+			#	eval_loaders.update(new_oo_test_loaders)
 
 			logging.info(f"computing metrics on splits {eval_loaders.keys()}")
 			metrics = ray_evaluate(model, eval_loaders)
