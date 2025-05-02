@@ -430,8 +430,10 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 				# Overall eval loaders (compute e.g. overall id/ood
 				# validation and test accuracy)
 				#GRADGUY - removed new_ood_test + ood_validation since we are renaming
-				eval_shards = (
-					'validation', 'id_test', 'ood_test')
+				if split_mode == "train":
+					eval_shards = ('validation', 'id_test', 'ood_test', 'new_ood_test')
+				else:
+					eval_shards = ('validation', 'id_test', 'ood_test')
 
 			else:
 				eval_shards = ('validation', 'test')
@@ -478,13 +480,14 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 				#GRADGUY
 				oo_test_loaders = {s: _prepare_shard(f"ood_test_{s}")
 								   for s in dset_domains['ood_test']}
-				# if split_mode != "new_train":
-       			# 			new_oo_test_loaders = {s: _prepare_shard(f"new_ood_test_{s}")
-                #         						for s in dset_domains['new_ood_test']}
-        		# 			eval_loaders.update(new_oo_test_loaders)
+				if split_mode == "train":
+					new_oo_test_loaders = {s: _prepare_shard(f"new_ood_test_{s}")
+										for s in dset_domains['new_ood_test']}
+					eval_loaders.update(new_oo_test_loaders)
+					eval_loaders.update(new_oo_test_loaders)
 				eval_loaders.update(id_test_loaders)
 				eval_loaders.update(oo_test_loaders)
-			#	eval_loaders.update(new_oo_test_loaders)
+				
 
 			logging.info(f"computing metrics on splits {eval_loaders.keys()}")
 			metrics = ray_evaluate(model, eval_loaders)
