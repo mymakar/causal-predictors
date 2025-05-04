@@ -33,7 +33,7 @@ from tableshift.models.utils import get_estimator
 from experiments_causal.metrics import balanced_accuracy_score
 from experiments_causal.run_experiment import bootstrap_auroc
 from statsmodels.stats.proportion import proportion_confint
-
+import copy
 
 def auto_garbage_collect(pct=75.0, force=False):
 	"""
@@ -110,15 +110,18 @@ class RayExperimentConfig:
 	def get_search_alg(self):
 		logging.info(f"instantiating search alg of type {self.search_alg}")
 		#GRADGUY
-		path = "./my-checkpoint2.pkl"
-		restore_previous = True
+		path = "./my-checkpoint.pkl"
+		restore_previous = False
 		if self.search_alg == "hyperopt":
 			if restore_previous:
 				search_alg = HyperOptSearch(metric=self.tune_metric_name,
 								  mode=self.mode,
 								  random_state_seed=self.random_state)
 				search_alg.restore(path)
+				
+				# this restore works
 				print(f"Restored search alg with {len(search_alg._hpopt_trials.trials)} trials")
+				
 				return search_alg
 			else:
 				return HyperOptSearch(metric=self.tune_metric_name,
@@ -356,7 +359,8 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 
 def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 							model_name: str,
-							split_mode: str, 
+							split_mode: str,
+							exp_name: str, 
 							pred_save_dir: str,
 							tune_config: RayExperimentConfig = None,
 							compute_per_domain_metrics: bool = True,  
@@ -685,7 +689,6 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 
 
 	search_alg = tune_config.get_search_alg()
-	
 	tuner = Tuner(
 		trainable=trainer,
 		run_config=RunConfig(name="tableshift",
@@ -698,11 +701,17 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			num_samples=tune_config.num_samples,
 			time_budget_s=tune_config.time_budget_hrs * 3600 if tune_config.time_budget_hrs else None,
 			max_concurrent_trials=tune_config.max_concurrent_trials))
-
+	#print("Before fit:")
+	#print("  Restored trials:", len(search_alg._hpopt_trials.trials))
 	results = tuner.fit()
 	#GradGuy: I think save here
+	
+	# When going from a fresh run, this says now we've done 2 trials
 	print(f"Now we've done {len(search_alg._hpopt_trials.trials)} trials")
-	search_alg.save("./my-checkpoint2.pkl")
+	os.makedirs(f"./{exp_name}", exist_ok=True)
+	save_path = f"./{exp_name}/{split_mode}-checkpoint.pkl"
+	search_alg.save(save_path)
+#	search_alg.save("./oracle-checkpoint.pkl")
 	ray.shutdown()
 	auto_garbage_collect(force=True)
 	if os.path.exists("/dev/shm"):

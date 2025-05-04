@@ -139,7 +139,8 @@ def main(experiment: str,
 
         results = run_ray_tune_experiment(
             dset=dset,
-            split_mode = split_mode,  
+            split_mode = split_mode,
+            exp_name = experiment,  
             model_name=model_name,
             pred_save_dir='/nfs/turbo/coe-soto/tableshift/res',
             tune_config=tune_config,
