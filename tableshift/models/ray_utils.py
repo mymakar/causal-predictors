@@ -300,7 +300,6 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 
 	# rename
 	
-	print(list(ray_dsets.keys()))
 	if split_mode == "oracle": 
 		ray_dsets['train'] = ray_dsets['oracle']
 		ray_dsets['validation'] = ray_dsets['ood_validation']
