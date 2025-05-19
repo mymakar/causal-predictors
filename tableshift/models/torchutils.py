@@ -80,7 +80,7 @@ def get_predictions_and_labels(model, loader, device=None, as_logits=False) -> T
     """Get the predictions (as logits, or probabilities) and labels."""
     prediction = []
     label = []
-
+    inputs = []
     if not device:
         device = f"cuda:{torch.cuda.current_device()}" \
             if torch.cuda.is_available() else "cpu"
@@ -93,17 +93,19 @@ def get_predictions_and_labels(model, loader, device=None, as_logits=False) -> T
         outputs = apply_model(model, batch_x)
         prediction.append(outputs)
         label.append(batch_y)
+        inputs.append(batch_x.cpu())
     prediction = torch.cat(prediction).squeeze().cpu().numpy()
     target = torch.cat(label).squeeze().cpu().numpy()
+    input_array = torch.cat(inputs).squeeze().cpu().numpy()
     if not as_logits:
         prediction = scipy.special.expit(prediction)
-    return prediction, target
+    return prediction, target, input_array
 
 
 @torch.no_grad()
 def evaluate(model, loader, device):
     model.eval()
-    prediction, target = get_predictions_and_labels(model, loader, device)
+    prediction, target, input_array = get_predictions_and_labels(model, loader, device)
     logit = get_predictions_and_labels(model, loader, device, as_logits=True)
     prediction = np.round(prediction)
     score = sklearn.metrics.accuracy_score(target, prediction)

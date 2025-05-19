@@ -34,8 +34,11 @@ def main(experiment, cache_dir, model, use_cached,
     dset = get_dataset(experiment, cache_dir, 
         use_cached=use_cached)
     X, y, _, _ = dset.get_pandas("train")
-
+    """
+    Put the config of the model here, just change default config
+    """
     config = get_default_config(model, dset)
+    # print this stuff out to see how you can make a LightGBM train instance
     estimator = get_estimator(model, **config)
     estimator = train(estimator, dset, config=config)
 

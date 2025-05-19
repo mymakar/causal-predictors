@@ -2,7 +2,7 @@ import os
 import sys
 
 # Add the directory containing your module to the system path
-sys.path.append('/home/rjsingh/causal_models')
+sys.path.append('/path/to/project)
 
 import argparse
 import glob
@@ -52,8 +52,6 @@ def load_data(experiment, cache_dir,
     # --------------------- #
     # --- Sanity check ---- #
     # --------------------- #
-    # make sure that raw imported data has the same dim
-    # as what was used in the nastl paper
     
     X, _, _, _ = dset.get_pandas(split_name) 
     assert original_df.shape[0] == X.shape[0]
@@ -108,6 +106,7 @@ def get_new_train_split(experiment, cache_dir,
     original_tr_df, base_dir = load_data(experiment, cache_dir, 
         use_cached, "train")
 
+    # sample a fraction of this, make a script that only calls this, and then swap the names (make it double size of new_train)
     new_tr_df = original_tr_df.sample(n=n, 
         random_state= random_seed)
 

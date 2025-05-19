@@ -1,0 +1,527 @@
+['validation', 'id_test', 'new_ood_test', 'new_train']
+['validation', 'id_test', 'train', 'ood_test']
+== Status ==
+Current time: 2025-05-04 14:24:01 (running for 00:00:23.45)
+Memory usage on this node: 11.0/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:06 (running for 00:00:28.48)
+Memory usage on this node: 10.7/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:11 (running for 00:00:33.48)
+Memory usage on this node: 11.0/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:16 (running for 00:00:38.50)
+Memory usage on this node: 10.9/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:21 (running for 00:00:43.50)
+Memory usage on this node: 11.0/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:26 (running for 00:00:48.52)
+Memory usage on this node: 12.1/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:31 (running for 00:00:53.53)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:36 (running for 00:00:58.55)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:41 (running for 00:01:03.55)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: None
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
+
+
+Result for TorchTrainer_a3fcdcf7:
+  _time_this_iter_s: 20.131410360336304
+  _timestamp: 1746383083
+  _training_iteration: 1
+  date: 2025-05-04_14-24-43
+  done: false
+  experiment_id: 30d2726f2f8a403e98d83de0fb98183c
+  hostname: armis20108.arc-ts.umich.edu
+  id_test_accuracy: 0.7221765159290869
+  id_test_auc: 0.7863444596641785
+  id_test_map: 0.5363256665491625
+  id_test_num_samples: 500782
+  id_test_ymean: 0.22378799319267273
+  iterations_since_restore: 1
+  node_ip: 10.224.37.16
+  ood_test_accuracy: 0.737448036386756
+  ood_test_accuracy_conf:
+  - 0.7355349881153816
+  - 0.7393543510433012
+  ood_test_auc: 0.7975705635556898
+  ood_test_auc_conf_lower: 0.7953001170174372
+  ood_test_auc_conf_upper: 0.7992074866325939
+  ood_test_balanced: 0.7119052410125732
+  ood_test_balanced_conf:
+  - 0.71054729007883
+  - 0.7132631919463165
+  ood_test_map: 0.8665821368484099
+  ood_test_num_samples: 204470
+  ood_test_ymean: 0.6361569166183472
+  pid: 845379
+  should_checkpoint: true
+  time_since_restore: 42.2414186000824
+  time_this_iter_s: 42.2414186000824
+  time_total_s: 42.2414186000824
+  timestamp: 1746383083
+  timesteps_since_restore: 0
+  training_iteration: 1
+  trial_id: a3fcdcf7
+  validation_accuracy: 0.7227590503633324
+  validation_auc: 0.7889721752923411
+  validation_map: 0.5377110585951163
+  validation_num_samples: 500781
+  validation_ymean: 0.2229118049144745
+  warmup_time: 14.754755973815918
+  
+== Status ==
+Current time: 2025-05-04 14:24:48 (running for 00:01:10.75)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:53 (running for 00:01:15.75)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:24:58 (running for 00:01:20.77)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:03 (running for 00:01:25.77)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:08 (running for 00:01:30.80)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:13 (running for 00:01:35.80)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:18 (running for 00:01:40.82)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:23 (running for 00:01:45.82)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:28 (running for 00:01:50.85)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:33 (running for 00:01:55.85)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:38 (running for 00:02:00.87)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:43 (running for 00:02:05.88)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+== Status ==
+Current time: 2025-05-04 14:25:48 (running for 00:02:10.90)
+Memory usage on this node: 12.5/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      1 |          42.2414 |              0.722759 |         0.537711 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+Result for TorchTrainer_a3fcdcf7:
+  _time_this_iter_s: 69.51994037628174
+  _timestamp: 1746383152
+  _training_iteration: 2
+  date: 2025-05-04_14-25-53
+  done: false
+  experiment_id: 30d2726f2f8a403e98d83de0fb98183c
+  hostname: armis20108.arc-ts.umich.edu
+  id_test_accuracy: 0.7241154833839875
+  id_test_auc: 0.7870329855980729
+  id_test_map: 0.5417879232986221
+  id_test_num_samples: 500782
+  id_test_ymean: 0.22378799319267273
+  iterations_since_restore: 2
+  node_ip: 10.224.37.16
+  ood_test_accuracy: 0.740338435956375
+  ood_test_accuracy_conf:
+  - 0.7384321605287949
+  - 0.7422378957609477
+  ood_test_auc: 0.7977217306155618
+  ood_test_auc_conf_lower: 0.7954241784724049
+  ood_test_auc_conf_upper: 0.7999559184343094
+  ood_test_balanced: 0.7170021533966064
+  ood_test_balanced_conf:
+  - 0.7156467356509529
+  - 0.71835757114226
+  ood_test_map: 0.8667494342394152
+  ood_test_num_samples: 204470
+  ood_test_ymean: 0.6361569166183472
+  pid: 845379
+  should_checkpoint: true
+  time_since_restore: 111.73173666000366
+  time_this_iter_s: 69.49031805992126
+  time_total_s: 111.73173666000366
+  timestamp: 1746383153
+  timesteps_since_restore: 0
+  training_iteration: 2
+  trial_id: a3fcdcf7
+  validation_accuracy: 0.7252751202621506
+  validation_auc: 0.7894332704227731
+  validation_map: 0.543639346470261
+  validation_num_samples: 500781
+  validation_ymean: 0.2229118049144745
+  warmup_time: 14.754755973815918
+  
+== Status ==
+Current time: 2025-05-04 14:25:55 (running for 00:02:17.51)
+Memory usage on this node: 12.4/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 2.0/4 CPUs, 1.0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 RUNNING)
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status   | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |          |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | RUNNING  | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      2 |          111.732 |              0.725275 |         0.543639 |                 500781 |
++-----------------------+----------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+Result for TorchTrainer_a3fcdcf7:
+  _time_this_iter_s: 69.51994037628174
+  _timestamp: 1746383152
+  _training_iteration: 2
+  date: 2025-05-04_14-25-53
+  done: true
+  experiment_id: 30d2726f2f8a403e98d83de0fb98183c
+  experiment_tag: 1_d_hidden=256,dropouts=0.1094,group_weights_step_size=0.0500,lr=0.0083,n_epochs=45,num_layers=4,weight_decay=0.0035
+  hostname: armis20108.arc-ts.umich.edu
+  id_test_accuracy: 0.7241154833839875
+  id_test_auc: 0.7870329855980729
+  id_test_map: 0.5417879232986221
+  id_test_num_samples: 500782
+  id_test_ymean: 0.22378799319267273
+  iterations_since_restore: 2
+  node_ip: 10.224.37.16
+  ood_test_accuracy: 0.740338435956375
+  ood_test_accuracy_conf:
+  - 0.7384321605287949
+  - 0.7422378957609477
+  ood_test_auc: 0.7977217306155618
+  ood_test_auc_conf_lower: 0.7954241784724049
+  ood_test_auc_conf_upper: 0.7999559184343094
+  ood_test_balanced: 0.7170021533966064
+  ood_test_balanced_conf:
+  - 0.7156467356509529
+  - 0.71835757114226
+  ood_test_map: 0.8667494342394152
+  ood_test_num_samples: 204470
+  ood_test_ymean: 0.6361569166183472
+  pid: 845379
+  should_checkpoint: true
+  time_since_restore: 111.73173666000366
+  time_this_iter_s: 69.49031805992126
+  time_total_s: 111.73173666000366
+  timestamp: 1746383153
+  timesteps_since_restore: 0
+  training_iteration: 2
+  trial_id: a3fcdcf7
+  validation_accuracy: 0.7252751202621506
+  validation_auc: 0.7894332704227731
+  validation_map: 0.543639346470261
+  validation_num_samples: 500781
+  validation_ymean: 0.2229118049144745
+  warmup_time: 14.754755973815918
+  
+== Status ==
+Current time: 2025-05-04 14:25:55 (running for 00:02:17.56)
+Memory usage on this node: 12.2/186.9 GiB 
+Using AsyncHyperBand: num_stopped=0
+Bracket: Iter 64.000: None | Iter 16.000: None | Iter 4.000: None | Iter 1.000: 0.7227590503633324
+Resources requested: 0/4 CPUs, 0/1 GPUs, 0.0/113.25 GiB heap, 0.0/52.53 GiB objects (0.0/1.0 accelerator_type:V100)
+Result logdir: /home/rjsingh/ray_results/tableshift
+Number of trials: 1/1 (1 TERMINATED)
++-----------------------+------------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+| Trial name            | status     | loc                 |   train_loop_config/d_ |   train_loop_config/dr |   ...n_loop_config/gro |   train_loop_config/lr |   train_loop_config/n_ |   train_loop_config/nu |   train_loop_config/we |   iter |   total time (s) |   validation_accuracy |   validation_map |   validation_num_sampl |
+|                       |            |                     |                 hidden |                 opouts |   up_weights_step_size |                        |                 epochs |               m_layers |             ight_decay |        |                  |                       |                  |                     es |
+|-----------------------+------------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------|
+| TorchTrainer_a3fcdcf7 | TERMINATED | 10.224.37.16:845379 |                    256 |                0.10939 |                   0.05 |             0.00833859 |                     45 |                      4 |             0.00350542 |      2 |          111.732 |              0.725275 |         0.543639 |                 500781 |
++-----------------------+------------+---------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+--------+------------------+-----------------------+------------------+------------------------+
+
+
+Now we've done 1 trials
+   validation_accuracy  ...  domain_split_id_values
+0             0.725275  ...                   ['1']
+
+[1 rows x 54 columns]

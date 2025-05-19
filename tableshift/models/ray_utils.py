@@ -33,7 +33,7 @@ from tableshift.models.utils import get_estimator
 from experiments_causal.metrics import balanced_accuracy_score
 from experiments_causal.run_experiment import bootstrap_auroc
 from statsmodels.stats.proportion import proportion_confint
-import copy
+
 
 def auto_garbage_collect(pct=75.0, force=False):
 	"""
@@ -109,24 +109,11 @@ class RayExperimentConfig:
 
 	def get_search_alg(self):
 		logging.info(f"instantiating search alg of type {self.search_alg}")
-		#GRADGUY
-		path = "./my-checkpoint.pkl"
-		restore_previous = False
+		
 		if self.search_alg == "hyperopt":
-			if restore_previous:
-				search_alg = HyperOptSearch(metric=self.tune_metric_name,
-								  mode=self.mode,
-								  random_state_seed=self.random_state)
-				search_alg.restore(path)
-				
-				# this restore works
-				print(f"Restored search alg with {len(search_alg._hpopt_trials.trials)} trials")
-				
-				return search_alg
-			else:
-				return HyperOptSearch(metric=self.tune_metric_name,
-								  mode=self.mode,
-								  random_state_seed=self.random_state)
+			return HyperOptSearch(metric=self.tune_metric_name,
+								mode=self.mode,
+								random_state_seed=self.random_state)
 		elif self.search_alg == "random":
 			return tune.search.basic_variant.BasicVariantGenerator(
 				max_concurrent=self.max_concurrent_trials,
@@ -179,8 +166,7 @@ def get_ray_checkpoint(model):
 	else:
 		return TorchCheckpoint.from_state_dict(model.state_dict())
 
-
-def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
+def ray_evaluate(model, split_loaders: Dict[str, Any], split_mode) -> dict:
 	"""Run evaluation of a model.
 
 	split_loaders should be a dict mapping split names to DataLoaders.
@@ -188,19 +174,13 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
 	dev = train.torch.get_device()
 	model.eval()
 	metrics = {}
-	# predictions = {}
 
 	for split, loader in split_loaders.items():
 		logging.debug(f"evaluating split {split} "
 					  f"for model {model.__class__.__name__}")
-		prediction_soft, target = get_predictions_and_labels(model, loader,
+		prediction_soft, target= get_predictions_and_labels(model, loader,
 															 dev)
 		prediction_hard = np.round(prediction_soft)
-
-		# predictions[f"{split}_soft"] = prediction_soft
-		# predictions[f"{split}_hard"] = prediction_hard
-		# predictions[f"{split}_true"] = target 
-
 		acc = sklearn.metrics.accuracy_score(target, prediction_hard)
 		avg_prec = sklearn.metrics.average_precision_score(target,
 														   prediction_soft)
@@ -208,12 +188,12 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
 		metrics[f"{split}_map"] = avg_prec
 		metrics[f"{split}_num_samples"] = len(target)
 		metrics[f"{split}_ymean"] = np.mean(target).item()
-
+		
 		metrics[f"{split}_auc"] = \
 			(sklearn.metrics.roc_auc_score(target, prediction_soft)
 			 if len(np.unique(target)) > 1 else np.nan)
 		"""
-		Add eval for ood_test and new_ood_test here
+		Evaluation for test splits
 		"""
 		if split == 'ood_test' or split == 'new_ood_test':
 			nobs = len(target)
@@ -221,11 +201,9 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
 			acc_conf = proportion_confint(count, nobs, alpha=0.05, method="beta")
 			metrics[split + "_accuracy_conf"] = acc_conf
 			auc = metrics[f"{split}_auc"]
-			# import this ... values?
 			auc_lower, auc_upper = bootstrap_auroc(target, prediction_soft)
 			metrics[split + "_auc_conf_lower"] = auc_lower
 			metrics[split + "_auc_conf_upper"] = auc_upper 
-			#import this
 			balanced_acc, balanced_acc_se = balanced_accuracy_score(
 				target=target, prediction=prediction_hard
 			)
@@ -236,7 +214,6 @@ def ray_evaluate(model, split_loaders: Dict[str, Any]) -> dict:
 			)
 			metrics[split + "_balanced" + "_conf"] = balanced_acc_conf
 	return metrics
-
 
 def _row_to_dict(row, X_names: List[str], y_name: str, G_names: List[str],
 				 d_name: str) -> Dict:
@@ -300,7 +277,6 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 		if (split_mode == "oracle") and \
 		(split in ["train", "new_train", "validation", "ood_test"]): 
 		    continue 
-		# GRADGUY: added ood_validation to bypass in new_train mode
 		elif (split_mode == "new_train") and \
 		(split in ["train", "oracle", "ood_test", "ood_validation"]):
 		    continue
@@ -323,36 +299,20 @@ def prepare_ray_datasets(dset: Union[TabularDataset, CachedDataset],
 		ray_dsets[split] = prepare_dataset(split, dset, prepare_pytorch)
 
 	# rename
+	
 	print(list(ray_dsets.keys()))
 	if split_mode == "oracle": 
 		ray_dsets['train'] = ray_dsets['oracle']
 		ray_dsets['validation'] = ray_dsets['ood_validation']
 		del ray_dsets['oracle'], ray_dsets['ood_validation']
-		#GRADGUY
 		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
 		del ray_dsets['new_ood_test']
-	#     keys_to_rename = [k for k in ray_dsets if k.startswith("oracle")]
-	#     for k in keys_to_rename:
-	#         new_key = k.replace("oracle", "train", 1)
-	#         ray_dsets[new_key] = ray_dsets.pop(k)
 
-	#     keys_to_rename = [k for k in ray_dsets if k.startswith("ood_validation")]
-	#     for k in keys_to_rename:
-	#         new_key = k.replace("ood_validation", "validation", 1)
-	#         ray_dsets[new_key] = ray_dsets.pop(k)
-	
 	elif split_mode == "new_train": 
 		ray_dsets['train'] = ray_dsets['new_train']
 		del ray_dsets['new_train']
-		#GRADGUY ADDED THIS
 		ray_dsets['ood_test'] = ray_dsets['new_ood_test']
 		del ray_dsets['new_ood_test']
-	#     keys_to_rename = [k for k in ray_dsets if k.startswith("new_train")]
-	#     for k in keys_to_rename:
-	#         new_key = k.replace("new_train", "train", 1)
-	#         ray_dsets[new_key] = ray_dsets.pop(k)
-			   
-	print(list(ray_dsets.keys()))
 
 	return ray_dsets
 
@@ -383,7 +343,6 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 	"""
 	auto_garbage_collect()
 
-	#TODO: This is the part to change    
 	dset_domains = {s: dset.get_domains(s) for s in
 					("train", "test", "id_test", "ood_test", 
 						"new_ood_test", "oracle", "new_train")}
@@ -440,11 +399,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			elif validation_only:
 				eval_shards = ('validation',)
 
-			# MM: changed this
 			elif dset.is_domain_split:
-				# Overall eval loaders (compute e.g. overall id/ood
-				# validation and test accuracy)
-				#GRADGUY - removed new_ood_test + ood_validation since we are renaming
+
 				if split_mode == "train":
 					eval_shards = ('validation', 'id_test', 'ood_test', 'new_ood_test')
 				else:
@@ -457,22 +413,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			return eval_loaders
 
 		def _on_epoch_end(loss_train):
-			"""Function to be called at the end of each training epoch to log
-			validation/test metrics.
-
-			We only compute id/ood domain-level metrics at the end of training,
-			because it is expensive to compute these every epoch.
-
-			At the final step, compute detailed per-domain test metrics (for
-			computational efficiency we do not compute per-domain validation
-			metrics).
-			"""
-			# eval_loaders = _prepare_eval_loaders(validation_only=True)
-			# logging.info(f"computing metrics on splits {eval_loaders.keys()}")
-			# metrics = ray_evaluate(model, eval_loaders)
-			# metrics.update(dict(train_loss=loss_train))
-			# checkpoint = get_ray_checkpoint(model)
-			# session.report(metrics, checkpoint=checkpoint)
+			
 			return
 
 		def _on_train_end(loss_train, epoch, pred_save_dir):
@@ -492,7 +433,6 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			if dset.is_domain_split and compute_per_domain_metrics:
 				id_test_loaders = {s: _prepare_shard(f"id_test_{s}")
 								   for s in dset_domains['id_test']}
-				#GRADGUY
 				oo_test_loaders = {s: _prepare_shard(f"ood_test_{s}")
 								   for s in dset_domains['ood_test']}
 				if split_mode == "train":
@@ -505,7 +445,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 				
 
 			logging.info(f"computing metrics on splits {eval_loaders.keys()}")
-			metrics = ray_evaluate(model, eval_loaders)
+			metrics = ray_evaluate(model, eval_loaders, split_mode)
 			metrics.update(dict(train_loss=loss_train))
 			checkpoint = get_ray_checkpoint(model)
 			session.report(metrics, checkpoint=checkpoint)
@@ -631,6 +571,8 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 		param_space = {"params": search_space[model_name]}
 
 	elif model_name == "lightgbm":
+		
+
 		scaling_config = ScalingConfig(
 			num_workers=tune_config.num_workers,
 			# Set trainer_resources as described in
@@ -654,6 +596,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 				  "first_metric_only": True,
 				  # Note: device_type must be 'gpu' if using GPU.
 				  "device_type": "cpu"}
+		
 		trainer = LightGBMTrainer(label_column=dset.target,
 								  datasets=datasets,
 								  params=params,
@@ -701,17 +644,7 @@ def run_ray_tune_experiment(dset: Union[TabularDataset, CachedDataset],
 			num_samples=tune_config.num_samples,
 			time_budget_s=tune_config.time_budget_hrs * 3600 if tune_config.time_budget_hrs else None,
 			max_concurrent_trials=tune_config.max_concurrent_trials))
-	#print("Before fit:")
-	#print("  Restored trials:", len(search_alg._hpopt_trials.trials))
-	results = tuner.fit()
-	#GradGuy: I think save here
 	
-	# When going from a fresh run, this says now we've done 2 trials
-	print(f"Now we've done {len(search_alg._hpopt_trials.trials)} trials")
-	os.makedirs(f"./{exp_name}", exist_ok=True)
-	save_path = f"./{exp_name}/{split_mode}-checkpoint.pkl"
-	search_alg.save(save_path)
-#	search_alg.save("./oracle-checkpoint.pkl")
 	ray.shutdown()
 	auto_garbage_collect(force=True)
 	if os.path.exists("/dev/shm"):

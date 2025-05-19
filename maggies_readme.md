@@ -153,7 +153,7 @@ python scripts/cache_task.py \
 ## step 2: create new data splits 
 ```
 python scripts/create_new_splits.py \
-    --experiment college_scorecard \
+    --experiment brfss_diabetes \
     --use_cached \
     --cache_dir  /nfs/turbo/coe-rbg/mmakar/tableshift/ 
 ```
